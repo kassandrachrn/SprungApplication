@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SprungGerman.Models;
+using SprungGermanData;
 
 namespace SprungGerman.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class LanguageContext : IdentityDbContext<Learner>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public LanguageContext(DbContextOptions<LanguageContext> options)
             : base(options)
         {
         }

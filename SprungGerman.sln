@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprungGerman", "SprungGerman\SprungGerman.csproj", "{A7C79C05-00F6-4310-94E3-E6FC02C423F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprungGermanData", "SprungGermanData\SprungGermanData.csproj", "{4002409C-7A3D-4EFB-BC19-4C726ECE4764}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprungGermanServices", "SprungGermanServices\SprungGermanServices.csproj", "{8455E3DA-9DEC-44ED-B99C-76350326EA1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A7C79C05-00F6-4310-94E3-E6FC02C423F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7C79C05-00F6-4310-94E3-E6FC02C423F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7C79C05-00F6-4310-94E3-E6FC02C423F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4002409C-7A3D-4EFB-BC19-4C726ECE4764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4002409C-7A3D-4EFB-BC19-4C726ECE4764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4002409C-7A3D-4EFB-BC19-4C726ECE4764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4002409C-7A3D-4EFB-BC19-4C726ECE4764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8455E3DA-9DEC-44ED-B99C-76350326EA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8455E3DA-9DEC-44ED-B99C-76350326EA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8455E3DA-9DEC-44ED-B99C-76350326EA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8455E3DA-9DEC-44ED-B99C-76350326EA1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
