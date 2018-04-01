@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SprungGermanData.Models
 {
-    class Group
+    public class Group
     {
-        public int GroupID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<Learner> Learners { get; set; }
-
-        public Group() {
-
-            Learners = new HashSet<Learner>();
-        }
-
+        public string Description { get; set; }
     }
 }

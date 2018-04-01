@@ -1,0 +1,41 @@
+﻿@model SprungGerman.Models.WordsListViewModel
+
+@{
+    ViewData["Title"] = "Words";
+}
+
+<title>Title</title>
+
+<div id="words">
+
+    <h2> Words List</h2>
+
+    <table id="wordsList">
+
+        <thead>
+            <tr>
+                <th>Id |</th>
+                <th>English</th>
+                <th>German</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var words in Model.Words) { 
+
+                <tr>
+                    <td>@words.Id</td>
+                    <td>@words.EnglishVersion</td>
+                    <td>@words.GermanVersion</td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+
+</div>
+
+
