@@ -5,24 +5,26 @@
 }
 
 <title>Title</title>
+<link href="~/css/progress/wordsLearned.css" rel="stylesheet" />
 
 <div id="words">
 
-    <h2> Words List</h2>
+    <h3> Words I know by now</h3>
 
     <table id="wordsList">
 
         <thead>
             <tr>
-                <th>Id |</th>
-                <th>English</th>
-                <th>German</th>
+                <th>Id -></th>
+                <th>English <<->> </th>
+                <th>German </th>
             </tr>
         </thead>
 
         <tbody>
 
-            @foreach (var words in Model.Words) { 
+            @foreach (var words in Model.Words)
+            {
 
                 <tr>
                     <td>@words.Id</td>
@@ -31,10 +33,10 @@
                 </tr>
             }
 
-
-
         </tbody>
     </table>
+
+    
 
 </div>
 

@@ -1,0 +1,28 @@
+﻿body {
+
+    background-color:black;
+    color: whitesmoke;
+}
+
+h4 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:lightskyblue;
+}
+
+.btn-submit{
+    background-color:black;
+    color:lightskyblue;
+    border:2px solid lightskyblue;
+}
+
+.form-control {
+    background-color:lightgray;
+    color: black;
+}
+
+.registerLogo{
+    padding-left:30%;
+    padding-top:5%;
+}
+
+

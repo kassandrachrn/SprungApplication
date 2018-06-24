@@ -3,6 +3,8 @@
     ViewData["Title"] = "Register";
 }
 
+<link href="~/css/account.css" rel="stylesheet" />
+
 <h2>@ViewData["Title"]</h2>
 <h4>Associate your @ViewData["LoginProvider"] account.</h4>
 <hr />
@@ -22,7 +24,7 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-default">Register</button>
+            <button type="submit" class="btn btn-default btn-submit">Register</button>
         </form>
     </div>
 </div>

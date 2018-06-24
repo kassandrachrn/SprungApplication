@@ -192,6 +192,8 @@ namespace SprungGermanData.Migrations
 
                     b.Property<int>("DailyPoints");
 
+                    b.Property<int>("GoalInMinutes");
+
                     b.Property<string>("LearnerId");
 
                     b.Property<int>("Streak");
@@ -212,7 +214,11 @@ namespace SprungGermanData.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<bool>("Locked");
+
                     b.Property<string>("Name");
+
+                    b.Property<int>("PercentageDone");
 
                     b.HasKey("Id");
 
@@ -242,15 +248,17 @@ namespace SprungGermanData.Migrations
 
                     b.Property<string>("GermanVersion");
 
-                    b.Property<int>("InProgressId");
-
                     b.Property<bool>("Learned");
+
+                    b.Property<int?>("LearnerProgressId");
 
                     b.Property<int>("LessonId");
 
                     b.Property<int>("TimesRepeated");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LearnerProgressId");
 
                     b.ToTable("Words");
                 });
@@ -298,6 +306,13 @@ namespace SprungGermanData.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SprungGermanData.Word", b =>
+                {
+                    b.HasOne("SprungGermanData.LearnerProgress")
+                        .WithMany("WordsLearned")
+                        .HasForeignKey("LearnerProgressId");
                 });
 #pragma warning restore 612, 618
         }

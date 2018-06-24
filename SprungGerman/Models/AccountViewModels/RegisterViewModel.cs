@@ -5,7 +5,7 @@ namespace SprungGerman.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
-        [MaxLength(80)]
+        [MaxLength(50)]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
 

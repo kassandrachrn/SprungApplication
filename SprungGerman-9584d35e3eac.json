@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sprunggerman",
+  "private_key_id": "9584d35e3eacc399eb974d81845e8f118718a6a1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC2ucext4sGno06\ni+26612SNFfuMuwH1LSxDs/xiYy3a7Wf9vbgVpbAqsUBtG1uRappaSubdif6yBGc\ntW31EoXvYEG9l86esfGbkZrK/pm13Upp6OrntiwKD/LkuxUxa0RO6n6+nkUHaZj7\nBhoHF+Fb7LOMu79eH7Md5IEWJZysuoYxAcwmxsw3njywXk/sZdySWF9vfGXICWhp\nU5nBv5FT+yHuXOqwdVhsMzf0orot/15dCdxoKByXF1XUZeLqbDRuSSW3Ndm0n7VY\n/p4l/JgOvRKDqtxOXbxrMXIUWJ7VRfWTw0Z5uEnnRhg3W6P1es/iWU3704TEbpl2\nDaq9SzilAgMBAAECggEAAKmT61Vt7AL4okOeGRf1LExuHNdd6tmu+Feu/Mzsb+t0\ndS/qbV3wU3f7BAUmWBM+vtLqXSNUmfCOPHTIQS5v7Qd6uDLRRVrXSaKsPpFQN4F7\nHX8CP6n10b6E4/vio93OmaujdHzzOpzmeKh+a9P+wDwk2tKBFdivEqFrWgweW95F\nVQmy6DnVhD7/TwYexfJsUEZ9e+DSeIjdSqMFPL9y4ToX2TqqcADlViSXUsYja6/d\ns1plt5Kostqh4cv13AoaYuz6MgtbnZDH21trLqME7cEp3LlxIIpTRYJsQ3Lgux4J\nhu42ymB1x0lANaUOryo0saKdeopAr92Rx6EAKVELaQKBgQDnsF+GHiLGej46seQH\neBSJjROcCc+ocfh2NXJHB51AeYzZSLc7UJNGgQpK1WzdWnuD5vp6IyiypD39mJdf\n0q9POFN2ufKxhckXaLERzNg6QH1DW8X2Wo/rIS1o6wnskssW1FzhrDE5gWxDD8tT\nbR2lRykd9vg82siVjAvV/lvweQKBgQDJ5igI4D5LgyyWTzA+JUSP9LBTTDPzdMX6\nA2o2sSJEobXydSS+Agyf7e6B3/KT1UV6gXK1ii6fLpBboeRA01sZzGuKgowqgqMo\nyjQBMvFLGmJX8Q/jugdO6Hh5AJGUAS5M9WAMtTFp7PU5YuYSVgTIXUHYCLzdpmL2\ngDK5jlB2jQKBgBrYuxjlYQ4ymAdhGZUr+uU9bapFEMTp/+piow1L+pLAAuwimujK\nm2YuCa1GMcksdOeB2kBQ1qRsl6pNBi1aUmoRkspNHawoXnbR8MKpQ9zsIBewCK5V\nLBwIyiRAJ/Q7xkCs9t5Hf6S0NIFI0TynhinipwcL2RPkHh4GDlELmkexAoGAdy+H\nMrYuECW/jHvy3rzhXJn1/TZe9LlapdyeNusab6mG3zqIFiLfkQnEYqbxbJPaEBea\nv9By9UVnsrA/LoWWogQq9/lZBT9ZUhsL2ClaiBtrMr77wlNvPQW/GK9dQSHxUz0H\nFnlgUkev+9CGQQzGhgGHfSCrXa17fkjvqNp6ZYECgYBREAstENNwGrgP0py8uLII\nCGtnmQixlOSzaP7lVf5IX2PvcY9eACtO9QWjADIb+NG0ZKid6RBqzv/z1cMCAwse\nriNF3XwQcwBO8fYZwxXjfCLhMeV91NGYBP8TpRenKkCylPWQpEZsLsuXrVtrEE/2\nqk6LRwMItspW/aH8C/WaVg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sprung-text-speech@sprunggerman.iam.gserviceaccount.com",
+  "client_id": "100696820013697140456",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sprung-text-speech%40sprunggerman.iam.gserviceaccount.com"
+}

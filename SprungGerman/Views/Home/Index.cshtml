@@ -1,19 +1,61 @@
-﻿@model SprungGerman.Models.HomePageViewModel
+﻿@model SprungGerman.Models.LearnerHomeViewModel
+
+@inject SignInManager<Learner> _signInManager;
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <title> Sprung </title>
 
+@if (_signInManager.IsSignedIn(User))
+{
 
-<div>
+    <link href="~/css/progress/progressHome.css" rel="stylesheet" />
 
-    <h1>@Model.Message</h1>
+    <h2>This will be my progress</h2>
 
-</div>
-<div>
+    <a asp-controller="Words" asp-action="Index" class="btn btn-default" id="myWords"> My Words</a>
 
-    <h3>Take a leap into German</h3>
+}
+else
+{
+    <link href="~/css/homepage.css" rel="stylesheet" />
 
-    @Html.ActionLink("About", "About")
-</div>
+    <body>
+
+        <div class="firstImage">
+            <div class="homeText">
+                <span class="intro-text">
+                    Sprung - Leap into a German Universe
+                </span>
+            </div>
+        </div>
+
+        <section class="section section-light">
+            <p>  Let us guide your Steps </p>
+        </section>
+
+        <div class="secondImage">
+            <div class="homeText">
+                <span class="intro-text">
+                    Learn by playing
+                </span>
+            </div>
+        </div>
+
+        <section class="section section-dark">
+            <p> New languages keep the mind young and the soul expressive</p>
+        </section>
+
+        <div class="firstImage">
+            <div class="homeText">
+                <span class="intro-text">
+                    It is easy, take a leap and see for yourself!
+                </span>
+            </div>
+        </div>
+
+    </body>
+   
+}
+

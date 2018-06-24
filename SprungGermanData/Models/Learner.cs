@@ -10,6 +10,7 @@ namespace SprungGermanData
         public string Password { get; set; }
         public override string UserName { get; set; }
         public int GroupId { get; set; }
+
     }
 
 }

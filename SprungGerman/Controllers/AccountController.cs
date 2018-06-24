@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SprungGerman.Models.AccountViewModels;
+using SprungGerman.Services;
 using SprungGermanData;
+using SprungGermanData.Interfaces;
 using SprungGermanServices;
 
 namespace SprungGerman.Controllers
@@ -16,21 +18,25 @@ namespace SprungGerman.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
+        public SprungDbContext dbContext;
         private readonly UserManager<Learner> _userManager;
         private readonly SignInManager<Learner> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private IProgress _progress;
 
         public AccountController(
             UserManager<Learner> userManager,
             SignInManager<Learner> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IProgress progress)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _progress = progress;
         }
 
         [TempData]
@@ -53,30 +59,43 @@ namespace SprungGerman.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if(user == null)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToAction(nameof(Lockout));
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Sorry. This email doesn't belong to a valid account");
                     return View(model);
+                    
                 }
+                else {
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe,
+                        lockoutOnFailure: true);
+
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User logged in.");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    if (result.RequiresTwoFactor)
+                    {
+                        return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
+                    }
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToAction(nameof(Lockout));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Wrong username or password. Please try again");
+                        return View(model);
+                    }
+
+                }
+                
             }
 
             // If we got this far, something failed, redisplay form
@@ -218,16 +237,21 @@ namespace SprungGerman.Controllers
             {
                 var user = new Learner { UserName = model.UserName, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
+                // create synced learner progress for each learner registered
                 if (result.Succeeded)
                 {
+                    _progress.LinkUserToProgress(user);
                     _logger.LogInformation("User created a new account with password.");
 
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    await EmailSenderExtensions.SendEmailConfirmationAsync(_emailSender, model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
+
+                    
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -306,7 +330,10 @@ namespace SprungGerman.Controllers
                 {
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
+
                 var user = new Learner { UserName = model.Email, Email = model.Email };
+                _progress.LinkUserToProgress(user);
+
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -317,8 +344,12 @@ namespace SprungGerman.Controllers
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
                         return RedirectToLocal(returnUrl);
                     }
+                    else
+                    {
+                        AddErrors(result);
+                        return View();
+                    }
                 }
-                AddErrors(result);
             }
 
             ViewData["ReturnUrl"] = returnUrl;

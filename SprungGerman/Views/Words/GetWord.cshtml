@@ -1,0 +1,15 @@
+﻿@model WordsViewModel;
+@{
+    ViewData["Title"] = "GetWord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>German Dictionary and Speech</h2>
+
+<h4>@Html.Raw(Model.EnglishVersion) -> @Html.Raw(Model.GermanVersion)</h4>
+
+<button type="submit" class="btn btn-default" asp-controller="Words" asp-action="GetSpeech">
+    Play audio 
+</button>
+
+<h5>@Model.Token</h5>

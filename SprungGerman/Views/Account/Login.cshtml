@@ -10,12 +10,16 @@
     ViewData["Title"] = "Log in";
 }
 
+<link href="~/lib/bootstrap/dist/css/bootstrap-social.css" rel="stylesheet" />
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+<link href="~/css/account.css" rel="stylesheet" />
+
 <h2>@ViewData["Title"]</h2>
 <div class="row">
     <div class="col-md-4">
         <section>
-            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-                <h4>Use a local account to log in.</h4>
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" >
+                <h4>Log in to jump into the lesson</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -37,14 +41,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-default">Log in</button>
+                    <button type="submit" class="btn btn-submit btn-default">Log in</button>
                 </div>
                 <div class="form-group">
                     <p>
-                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                        <a asp-action="ForgotPassword">I don't remember the password</a>
                     </p>
                     <p>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">I want a new account</a>
                     </p>
                 </div>
             </form>
@@ -52,7 +56,7 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to log in.</h4>
+            <h4>Log in with your favourite account</h4>
             <hr />
             @{
                 var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -71,10 +75,29 @@
                         <div>
                             <p>
                                 @foreach (var provider in loginProviders)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>
-                                }
-                            </p>
+                                 {
+                                     if (provider.DisplayName.Equals("Google"))
+                                     {
+                                        <br />
+                                        <button type="submit" class="btn btn-social btn-google"
+                                                name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                            <i class="fab fa-google"></i> @provider.Name 
+                                        </button>
+                                        <br />
+                                     }
+                                     else if (provider.DisplayName.Equals("Facebook"))
+                                     {
+
+                                        <br />
+                                        <button type="submit" class="btn btn-social btn-facebook"
+                                        name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                        <i class="fab fa-facebook"></i>@provider.Name
+                                        </button>
+                                        <br />
+                                     }
+
+                                 }
+                           </p>
                         </div>
                     </form>
                 }

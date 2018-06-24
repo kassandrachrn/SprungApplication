@@ -1,0 +1,53 @@
+﻿html, body,.body-content, .firstImage, .secondImage {
+
+    height:100%;
+    margin:0;
+    background-color:black;
+    color:lightblue;
+    padding:0;
+}
+
+.navbar {
+    height:50px;
+}
+
+.firstImage, .secondImage {
+
+    position:relative;
+    opacity:0.85;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+
+}
+
+.firstImage {
+    background-image:url("../images/universe-open.jpg");
+    min-height:70%;
+}
+
+.secondImage {
+    background-image:url("../images/quantum-leap.jpg");
+    min-height:70%;
+}
+
+.section{
+    text-align:center;
+    font-size:larger;
+    padding:50px 80px;
+
+    background-color:black;
+    color:lightblue;
+}
+
+.homeText{
+    position:absolute;
+    top:50%;
+    width:100%;
+    text-align:center;
+    color:black;
+    font-size:x-large;
+    font-weight:600;
+    letter-spacing:normal;
+}
